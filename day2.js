@@ -26,17 +26,57 @@
 
 // How many passwords are valid according to their policies?
 
-//this trash ass data they gave me i need to like split up first ill split at the space so we have 3 different parts of trash data,
+//this data they gave me i need to like split up first ill split at the space so we have 3 different parts of data,
 // split first one at the dash then the third one will be the letter we are checking then the last part 
 // will be what we check 
 
-//iterate through the amount of times given with the letter that is given and return true or false 
 const fs = require('fs')
-const entries = fs.readFileSync('day2.txt', {encoding: 'utf-8'}).split('\n').filter(x => x)
-console.log(entries)
+const entries = fs.readFileSync('day2.txt', {encoding: 'utf-8'}).split('\n')
+// console.log(entries)
 
-function pwdCheck() {
+// const entries = [
+//     '1-3 a: abcde',
+//     '1-3 b: cdefg',
+//     '2-9 c: ccccccccc'
+
+// ]
+
+
+function getMin(line) {
+    return parseInt(line.split('-')[0])
+}
+
+function getMax(line) {
+    return parseInt(line.split('-')[1].split(' ')[0])
+}
+
+function getChar(line) {
+    return line.split(':')[0].split(' ')[1]
     
 }
+
+function getPwd(line) {
+    return line.split(': ')[1]
+}
+
+function lineContainsValidPwd(line) {
+   let len = getPwd(line).split('').filter(function(char) {return char === getChar(line)}).length 
+   return len >= getMin(line) && len <= getMax(line)
+
+}
+
+function checkingHowManyPwdAreCorrect(lines) {
+    var validPasswords = 0
+    for(let i = 0; i < lines.length; i++) {
+        if(lineContainsValidPwd(lines[i])) {
+            validPasswords++
+
+        }
+    }
+    return validPasswords
+}
+
+console.log(checkingHowManyPwdAreCorrect(entries))
+
 
    
