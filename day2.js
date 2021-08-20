@@ -42,41 +42,42 @@ const entries = fs.readFileSync('day2.txt', {encoding: 'utf-8'}).split('\n')
 // ]
 
 
-function getMin(line) {
-    return parseInt(line.split('-')[0])
-}
+// function getMin(line) {
+//     return parseInt(line.split('-')[0])
+// }
 
-function getMax(line) {
-    return parseInt(line.split('-')[1].split(' ')[0])
-}
+// function getMax(line) {
+//     return parseInt(line.split('-')[1].split(' ')[0])
+// }
 
-function getChar(line) {
-    return line.split(':')[0].split(' ')[1]
+// function getChar(line) {
+//     return line.split(':')[0].split(' ')[1]
     
-}
+// }
 
-function getPwd(line) {
-    return line.split(': ')[1]
-}
+// function getPwd(line) {
+//     return line.split(': ')[1]
+// }
 
-function lineContainsValidPwd(line) {
-   let len = getPwd(line).split('').filter(function(char) {return char === getChar(line)}).length 
-   return len >= getMin(line) && len <= getMax(line)
+// function lineContainsValidPwd(line) {
+//    let len = getPwd(line).split('').filter(function(char) {return char === getChar(line)}).length 
+//    return len >= getMin(line) && len <= getMax(line)
 
-}
+// }
 
-function checkingHowManyPwdAreCorrect(lines) {
-    var validPasswords = 0
-    for(let i = 0; i < lines.length; i++) {
-        if(lineContainsValidPwd(lines[i])) {
-            validPasswords++
+// function checkingHowManyPwdAreCorrect(lines) {
+//     var validPasswords = 0
+//     for(let i = 0; i < lines.length; i++) {
+//         if(lineContainsValidPwd(lines[i])) {
+//             validPasswords++
 
-        }
-    }
-    return validPasswords
-}
+//         }
+//     }
+//     return validPasswords
+// }
 
-console.log(checkingHowManyPwdAreCorrect(entries))
+// console.log(checkingHowManyPwdAreCorrect(entries))
+
 
 
    
